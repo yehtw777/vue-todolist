@@ -2,7 +2,9 @@
 import TodoItem from "./TodoItem.vue";
 
 export default {
-  components: { TodoItem },
+  components: {
+    TodoItem,
+  },
   name: "Todolist",
   component: {},
   props: {
@@ -24,11 +26,25 @@ export default {
       console.log("handleSubmit");
       this.items.push(this.work);
       this.work = "";
-      console.log();
     },
+
     handleDelete(index) {
       this.items.splice(index, 1);
     },
+
+    // handleEnter() {
+
+    //   this.items.push(this.work);
+    //   this.work = "";
+    // },
+
+    // mounted() {
+    //   window.addEventListener('keyup', function (e) {
+    //       if (e.keyCode === 108) {
+    //         console.log("handleEnter");
+    //       }
+    //     }
+    //   }
   },
 };
 
@@ -40,8 +56,24 @@ export default {
     <h1 class="thisIsReallyAtest">This is a test..........</h1>
     <p>{{ msg }}</p>
     <button @click="alertMsg">Alert</button>
-    <input v-model="work" />
-    <button @click="handleSubmit">HandleSubmit</button>
+    <b-container fluid>
+      <b-row class="my-1">
+        <b-col sm="2">
+          <label for="input-large">Todolist:</label>
+        </b-col>
+        <b-col sm="10">
+          <b-form-input
+            id="input-large"
+            size="lg"
+            v-model="work"
+            placeholder="Enter your name"
+          ></b-form-input>
+        </b-col>
+      </b-row>
+    </b-container>
+    <button @click="handleSubmit" @keyup.enter="handleEnter">
+      HandleSubmit
+    </button>
     <ul>
       <TodoItem
         v-for="(item, index) in items"
@@ -56,7 +88,7 @@ export default {
   </div>
 </template>
 
-<style scope>
+<style>
 h1.thisIsReallyAtest {
   color: red;
 }
