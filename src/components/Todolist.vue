@@ -26,6 +26,9 @@ export default {
       this.work = "";
       console.log();
     },
+    handleDelete(index) {
+      this.items.splice(index, 1);
+    },
   },
 };
 
@@ -45,8 +48,9 @@ export default {
         :key="item.fruit"
         :content="item"
         :index="index"
+        @delete="handleDelete"
       >
-        {{ item.fruit }}
+        {{ item }}
       </TodoItem>
     </ul>
   </div>

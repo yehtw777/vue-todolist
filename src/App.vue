@@ -13,7 +13,7 @@ export default {
 
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <Todolist msg="Welcom to the test msg" />
   </div>
