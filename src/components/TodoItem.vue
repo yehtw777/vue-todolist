@@ -17,9 +17,12 @@ export default {
 <template>
   <div>
     <!-- <h2>TodoItem is me!!!!!</h2> -->
-    <li @click="handleDelete">{{ content }}</li>
+    <li class="todoitemFS" @click="handleDelete">{{ content }}</li>
   </div>
 </template>
 
 <style>
+.todoitemFS {
+  font-size: xx-large;
+}
 </style>

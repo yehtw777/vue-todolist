@@ -18,10 +18,6 @@ export default {
     };
   },
   methods: {
-    alertMsg() {
-      console.log("alertMsg");
-    },
-
     handleSubmit() {
       console.log("handleSubmit");
       this.items.push(this.work);
@@ -53,43 +49,76 @@ export default {
 
 <template>
   <div>
-    <h1 class="thisIsReallyAtest">This is a test..........</h1>
-    <p>{{ msg }}</p>
-    <button @click="alertMsg">Alert</button>
-    <b-container fluid>
-      <b-row class="my-1">
-        <b-col sm="2">
-          <label for="input-large">Todolist:</label>
-        </b-col>
-        <b-col sm="10">
-          <b-form-input
-            id="input-large"
-            size="lg"
-            v-model="work"
-            placeholder="Enter your name"
-          ></b-form-input>
-        </b-col>
-      </b-row>
-    </b-container>
-    <button @click="handleSubmit" @keyup.enter="handleEnter">
-      HandleSubmit
-    </button>
-    <ul>
-      <TodoItem
-        v-for="(item, index) in items"
-        :key="item.fruit"
-        :content="item"
-        :index="index"
-        @delete="handleDelete"
-      >
-        {{ item }}
-      </TodoItem>
-    </ul>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <label>Todolist:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="todoitemBg">
+            <ul class="listStyleNone">
+              <TodoItem
+                class="todoitem"
+                v-for="(item, index) in items"
+                :key="item.fruit"
+                :content="item"
+                :index="index"
+                @delete="handleDelete"
+              >
+                {{ item }}
+              </TodoItem>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="row">
+            <div class="col-xl-3"></div>
+            <div class="col-xl-6">
+              <b-form-input
+                id="input-large"
+                size="lg"
+                v-model="work"
+                placeholder="Enter your name"
+              ></b-form-input>
+            </div>
+            <div class="col-xl-3">
+              <button
+                class="btn-lg"
+                size="lg"
+                @click="handleSubmit"
+                @keyup.enter="handleEnter"
+              >
+                HandleSubmit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style>
 h1.thisIsReallyAtest {
   color: red;
+}
+.col1 {
+  background-color: yellowgreen;
+}
+.col2 {
+  background-color: purple;
+}
+/* .todoitem {
+  background-color: saddlebrown;
+} */
+.todoitemBg {
+  background-color: skyblue;
+}
+.listStyleNone {
+  list-style-type: none;
 }
 </style>
